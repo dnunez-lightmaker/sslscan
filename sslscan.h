@@ -85,92 +85,92 @@ const char *COL_RED_BG = "";
 #endif
 
 #ifdef _WIN32
-    #define SLEEPMS(ms) Sleep(ms);
+#define SLEEPMS(ms) Sleep(ms);
 #else
-    #define SLEEPMS(ms) do {                    \
-        struct timeval wait = { 0, ms*1000 };   \
-        select(0, NULL, NULL, NULL, &wait);     \
-    } while(0)
+#define SLEEPMS(ms) do {                    \
+struct timeval wait = { 0, ms*1000 };   \
+	select(0, NULL, NULL, NULL, &wait);     \
+} while(0)
 #endif
 
 const char *program_banner = "                   _\n"
-                             "           ___ ___| |___  ___ __ _ _ __\n"
-                             "          / __/ __| / __|/ __/ _` | '_ \\\n"
-                             "          \\__ \\__ \\ \\__ \\ (_| (_| | | | |\n"
-                             "          |___/___/_|___/\\___\\__,_|_| |_|\n\n";
+"           ___ ___| |___  ___ __ _ _ __\n"
+"          / __/ __| / __|/ __/ _` | '_ \\\n"
+"          \\__ \\__ \\ \\__ \\ (_| (_| | | | |\n"
+"          |___/___/_|___/\\___\\__,_|_| |_|\n\n";
 
 struct sslCipher
 {
-    // Cipher Properties...
-    const char *name;
-    char *version;
-    int bits;
-    char description[512];
-    const SSL_METHOD *sslMethod;
-    struct sslCipher *next;
+	// Cipher Properties...
+	const char *name;
+	char *version;
+	int bits;
+	char description[512];
+	const SSL_METHOD *sslMethod;
+	struct sslCipher *next;
 };
 
 struct sslCheckOptions
 {
-    // Program Options...
-    char host[512];
-    char sniname[512];
-    int port;
-    int showCertificate;
-    int checkCertificate;
-    int showTrustedCAs;
-    int showClientCiphers;
-    int showCipherIds;
-    int showTimes;
-    int ciphersuites;
-    int reneg;
-    int fallback;
-    int compression;
-    int heartbleed;
-    int starttls_ftp;
-    int starttls_imap;
-    int starttls_irc;
-    int starttls_ldap;
-    int starttls_pop3;
-    int starttls_smtp;
-    int starttls_xmpp;
-    int starttls_psql;
-    int xmpp_server;
-    int sslVersion;
-    int targets;
-    int sslbugs;
-    int http;
-    int rdp;
-    int verbose;
-    int cipher_details;
-    int ipv4;
-    int ipv6;
-    int ocspStatus;
-    char cipherstring[65536];
+	// Program Options...
+	char host[512];
+	char sniname[512];
+	int port;
+	int showCertificate;
+	int checkCertificate;
+	int showTrustedCAs;
+	int showClientCiphers;
+	int showCipherIds;
+	int showTimes;
+	int ciphersuites;
+	int reneg;
+	int fallback;
+	int compression;
+	int heartbleed;
+	int starttls_ftp;
+	int starttls_imap;
+	int starttls_irc;
+	int starttls_ldap;
+	int starttls_pop3;
+	int starttls_smtp;
+	int starttls_xmpp;
+	int starttls_psql;
+	int xmpp_server;
+	int sslVersion;
+	int targets;
+	int sslbugs;
+	int http;
+	int rdp;
+	int verbose;
+	int cipher_details;
+	int ipv4;
+	int ipv6;
+	int ocspStatus;
+	char cipherstring[65536];
 
-    // File Handles...
-    FILE *xmlOutput;
+	// File Handles...
+	FILE *xmlOutput;
 
-    // TCP Connection Variables...
-    short h_addrtype;
-    struct sockaddr_in serverAddress;
-    struct sockaddr_in6 serverAddress6;
-    struct timeval timeout;
-    unsigned int sleep;
+	// TCP Connection Variables...
+	short h_addrtype;
+	struct sockaddr_in serverAddress;
+	struct sockaddr_in6 serverAddress6;
+	struct timeval timeout;
+	unsigned int sleep;
 
-    // SSL Variables...
-    SSL_CTX *ctx;
-    struct sslCipher *ciphers;
-    char *clientCertsFile;
-    char *privateKeyFile;
-    char *privateKeyPassword;
+	// SSL Variables...
+	SSL_CTX *ctx;
+	struct sslCipher *ciphers;
+	char *clientCertsFile;
+	char *privateKeyFile;
+	char *privateKeyPassword;
 };
 
 // store renegotiation test data
 struct renegotiationOutput
 {
-    int supported;
-    int secure;
+	int supported;
+	int secure;
 };
 
 /* We redefine these so that we can run correctly even if the vendor gives us
